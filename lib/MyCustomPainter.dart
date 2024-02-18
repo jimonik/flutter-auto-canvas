@@ -4,45 +4,37 @@ import 'package:flutter/material.dart';
 class MyCustomPainter extends CustomPainter {
   final Color backgroundColor;
   final List<FakeWidget> line;
-
   MyCustomPainter(
       {super.repaint, required this.backgroundColor, required this.line});
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint();
-    drawBackgroundColor(canvas, size, backgroundColor, paint);
-    drawWidget(line, paint, canvas, size);
+    _drawBackgroundColor(canvas, size, backgroundColor, paint);
+    _drawWidget(line, paint, canvas, size);
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
-
-  void drawLoading(Size size, Canvas canvas) {
-    final textPainter = TextPainter(
-        text:
-            const TextSpan(text: '加载中', style: TextStyle(color: Colors.black)),
-        textDirection: TextDirection.ltr);
-    textPainter.layout(minWidth: 0, maxWidth: size.width);
-    textPainter.paint(
-        canvas,
-        Offset((size.width - textPainter.width) / 2,
-            (size.height - textPainter.height) / 2));
-  }
-
-  void drawBackgroundColor(
+  void _drawBackgroundColor(
       Canvas canvas, Size size, Color backgroundColor, Paint paint) {
     canvas.drawRect(Rect.fromLTWH(0, 0, size.width, size.height),
         paint..color = backgroundColor);
   }
 
-  void drawWidget(
+  void _drawWidget(
       List<FakeWidget> fakeWidget, Paint paint, Canvas canvas, Size size) {
     for (var element in fakeWidget) {
       switch (element.type) {
         case WidgetType.line:
           drawLine(element, paint, canvas, size);
         case WidgetType.curve:
-          drawCurve(element, paint, canvas, size);
+          _drawCurve(element, paint, canvas, size);
+        case WidgetType.circle:
+          _drawCircle(element, paint, canvas, size);
+        case WidgetType.elliptic:
+        // TODO: Handle this case.
+        case WidgetType.nAngle:
+        // TODO: Handle this case.
       }
     }
   }
@@ -60,9 +52,11 @@ class MyCustomPainter extends CustomPainter {
     );
   }
 
-  void drawCurve(FakeWidget element, Paint paint, Canvas canvas, Size size) {
+  void _drawCurve(FakeWidget element, Paint paint, Canvas canvas, Size size) {
     paint.color = element.color.value;
     paint.strokeWidth = 1;
+    paint.style = element.style.value;
+    paint.strokeWidth = element.strokeWidth.value;
     final Path path = Path();
     path.moveTo(
         size.width * element.startX.value, size.height * element.startY.value);
@@ -76,5 +70,18 @@ class MyCustomPainter extends CustomPainter {
     }
     path.close();
     canvas.drawPath(path, paint);
+  }
+
+  void _drawCircle(
+      FakeWidget fakeWidget, Paint paint, Canvas canvas, Size size) {
+    paint.color = fakeWidget.color.value;
+    paint.strokeWidth = fakeWidget.strokeWidth.value;
+    paint.strokeCap = fakeWidget.strokeCap.value;
+    paint.style = fakeWidget.style.value;
+    canvas.drawCircle(
+        Offset(size.width * fakeWidget.startX.value,
+            size.height * fakeWidget.startY.value),
+        fakeWidget.circleRadius.value,
+        paint);
   }
 }

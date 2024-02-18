@@ -2,7 +2,7 @@ import 'package:custompaint/bean/Line.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Future<WidgetType?> showSelectWidgetDialog(List<WidgetType> list) async {
+Future<WidgetType?> showSelectWidgetDialog() async {
   return await Get.dialog(Container(
     width: Get.width * 0.1,
     height: Get.height * 0.1,
@@ -27,8 +27,8 @@ Future<WidgetType?> showSelectWidgetDialog(List<WidgetType> list) async {
           child: Center(
             child: Wrap(
               alignment: WrapAlignment.center,
-              children: List.generate(list.length, (index) {
-                var bean = list[index];
+              children: List.generate(WidgetType.values.length, (index) {
+                var bean = WidgetType.values[index];
                 return InkWell(
                   onTap: () {
                     Get.back(result: bean);

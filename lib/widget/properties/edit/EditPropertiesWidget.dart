@@ -1,6 +1,7 @@
 import 'package:custompaint/bean/Line.dart';
 import 'package:custompaint/page/main/logic.dart';
 import 'package:custompaint/widget/CustomTextField.dart';
+import 'package:custompaint/widget/properties/edit/subtype/CircleProperty.dart';
 import 'package:custompaint/widget/properties/edit/subtype/CurveProperty.dart';
 import 'package:custompaint/widget/properties/edit/subtype/LineProperty.dart';
 import 'package:flutter/material.dart';
@@ -83,6 +84,14 @@ class EditPropertiesWidget extends StatelessWidget {
         return LineProperty(bean: bean);
       case WidgetType.curve:
         return CurveProperty(bean: bean);
+      case WidgetType.circle:
+        return CircleProperty(bean: bean);
+      case WidgetType.elliptic:
+        // TODO: Handle this case.
+        return Text("椭圆");
+      case WidgetType.nAngle:
+        // TODO: Handle this case.
+        return Text("N边行");
     }
   }
 }

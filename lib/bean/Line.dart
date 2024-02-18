@@ -14,8 +14,11 @@ class FakeWidget {
   final String uuid;
   final WidgetType type;
   final Rx<StrokeCap> strokeCap;
-  RxString name = ''.obs;
-  RxList<CurveLineBean> curvePointList;
+  final RxString name;
+  final RxList<CurveLineBean> curvePointList;
+  final RxDouble circleRadius;
+
+  final Rx<PaintingStyle> style;
   FakeWidget({
     required this.color,
     required this.startY,
@@ -28,6 +31,8 @@ class FakeWidget {
     required this.name,
     required this.strokeCap,
     required this.curvePointList,
+    required this.circleRadius,
+    required this.style,
   });
   FakeWidget clone() {
     return FakeWidget(
@@ -41,13 +46,18 @@ class FakeWidget {
         type: type,
         name: name,
         strokeCap: strokeCap,
-        curvePointList: curvePointList);
+        curvePointList: curvePointList,
+        circleRadius: circleRadius,
+        style: style);
   }
 }
 
 enum WidgetType {
   line(name: "直线"),
   curve(name: "曲线"),
+  circle(name: "圆形"),
+  elliptic(name: "椭圆"),
+  nAngle(name: "N边形"),
   ;
 
   final String name;

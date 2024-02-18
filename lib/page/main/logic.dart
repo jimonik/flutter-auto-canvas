@@ -15,10 +15,7 @@ class MainLogic extends GetxController {
   }
 
   Future<void> addLine() async {
-    WidgetType? type = await showSelectWidgetDialog([
-      WidgetType.line,
-      WidgetType.curve,
-    ]);
+    WidgetType? type = await showSelectWidgetDialog();
     if (type == null) {
       return;
     }
@@ -35,7 +32,9 @@ class MainLogic extends GetxController {
             type: WidgetType.line,
             name: "".obs,
             strokeCap: StrokeCap.square.obs,
-            curvePointList: <CurveLineBean>[].obs));
+            curvePointList: <CurveLineBean>[].obs,
+            circleRadius: (3.0).obs,
+            style: PaintingStyle.fill.obs));
       case WidgetType.curve:
         state.fakeWidgetList.add(FakeWidget(
             color: Colors.black.obs,
@@ -59,7 +58,28 @@ class MainLogic extends GetxController {
                   endX: (0.6).obs,
                   startY: (1.0).obs,
                   endY: (1.0).obs),
-            ].obs));
+            ].obs,
+            circleRadius: (3.0).obs,
+            style: PaintingStyle.fill.obs));
+      case WidgetType.circle:
+        state.fakeWidgetList.add(FakeWidget(
+            color: Colors.black.obs,
+            strokeWidth: (3.0).obs,
+            startX: (0.0).obs,
+            startY: (0.0).obs,
+            endX: (1.0).obs,
+            endY: (1.0).obs,
+            uuid: const Uuid().v4(),
+            type: WidgetType.circle,
+            name: "".obs,
+            strokeCap: StrokeCap.square.obs,
+            curvePointList: <CurveLineBean>[].obs,
+            circleRadius: (3.0).obs,
+            style: PaintingStyle.fill.obs));
+      case WidgetType.elliptic:
+      // TODO: Handle this case.
+      case WidgetType.nAngle:
+      // TODO: Handle this case.
     }
   }
 
