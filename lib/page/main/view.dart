@@ -1,8 +1,7 @@
 import 'package:custompaint/MyCustomPainter.dart';
-import 'package:custompaint/widget/BackgroundWidget.dart';
-import 'package:custompaint/widget/LineWidget.dart';
-import 'package:custompaint/widget/ShapeWidget.dart';
-import 'package:custompaint/widget/properties/CurrentPropertiesWidget.dart';
+import 'package:custompaint/widget/properties/edit/EditPropertiesWidget.dart';
+import 'package:custompaint/widget/properties/tab/PublicPropertyWidget.dart';
+import 'package:custompaint/widget/properties/tab/ShapeWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +39,7 @@ class MainPage extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(flex: 1, child: CurrentPropertiesWidget()),
+          const Expanded(flex: 1, child: EditPropertiesWidget()),
           const Expanded(
               flex: 1,
               child: DefaultTabController(
@@ -55,10 +54,6 @@ class MainPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.all(8.0),
-                          child: Text("线条"),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
                           child: Text("形状"),
                         ),
                       ]),
@@ -66,8 +61,7 @@ class MainPage extends StatelessWidget {
                     Expanded(
                       child: TabBarView(
                         children: [
-                          PublicPanelWidget(),
-                          LineWidget(),
+                          PublicPropertyWidget(),
                           ShapeWidget(),
                         ],
                       ),

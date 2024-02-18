@@ -11,7 +11,6 @@ class CurveProperty extends StatelessWidget {
   final FakeWidget bean;
 
   const CurveProperty({super.key, required this.bean});
-
   @override
   Widget build(BuildContext context) {
     final logic = Get.find<MainLogic>();
@@ -83,9 +82,7 @@ class CurveProperty extends StatelessWidget {
                     value: bean.startX.value,
                     onChanged: (a) {
                       bean.startX.value = a;
-                    },
-                    onChangeEnd: (d) {
-                      bean.startX.value = d;
+                      logic.refreshList();
                     },
                   );
                 }),
@@ -101,9 +98,7 @@ class CurveProperty extends StatelessWidget {
                     value: bean.startY.value,
                     onChanged: (a) {
                       bean.startY.value = a;
-                    },
-                    onChangeEnd: (d) {
-                      bean.startY.value = d;
+                      logic.refreshList();
                     },
                   );
                 }),
@@ -127,9 +122,9 @@ class CurveProperty extends StatelessWidget {
                           child: Obx(() {
                             return Slider(
                               value: item.startX.value,
-                              onChanged: (a) {},
-                              onChangeEnd: (d) {
-                                item.startX.value = d;
+                              onChanged: (a) {
+                                item.startX.value = a;
+                                logic.refreshList();
                               },
                             );
                           }),
@@ -143,9 +138,9 @@ class CurveProperty extends StatelessWidget {
                           child: Obx(() {
                             return Slider(
                               value: item.startY.value,
-                              onChanged: (a) {},
-                              onChangeEnd: (a) {
+                              onChanged: (a) {
                                 item.startY.value = a;
+                                logic.refreshList();
                               },
                             );
                           }),
@@ -159,9 +154,9 @@ class CurveProperty extends StatelessWidget {
                           child: Obx(() {
                             return Slider(
                               value: item.endX.value,
-                              onChanged: (a) {},
-                              onChangeEnd: (a) {
+                              onChanged: (a) {
                                 item.endX.value = a;
+                                logic.refreshList();
                               },
                             );
                           }),
@@ -177,9 +172,7 @@ class CurveProperty extends StatelessWidget {
                               value: item.endY.value,
                               onChanged: (a) {
                                 item.endY.value = a;
-                              },
-                              onChangeEnd: (d) {
-                                item.endY.value = d;
+                                logic.refreshList();
                               },
                             );
                           }),

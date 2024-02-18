@@ -29,6 +29,20 @@ class FakeWidget {
     required this.strokeCap,
     required this.curvePointList,
   });
+  FakeWidget clone() {
+    return FakeWidget(
+        color: color,
+        startY: startY,
+        endY: endY,
+        startX: startX,
+        endX: endX,
+        strokeWidth: strokeWidth,
+        uuid: uuid,
+        type: type,
+        name: name,
+        strokeCap: strokeCap,
+        curvePointList: curvePointList);
+  }
 }
 
 enum WidgetType {

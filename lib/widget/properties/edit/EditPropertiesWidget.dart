@@ -1,14 +1,14 @@
 import 'package:custompaint/bean/Line.dart';
 import 'package:custompaint/page/main/logic.dart';
 import 'package:custompaint/widget/CustomTextField.dart';
-import 'package:custompaint/widget/properties/CurveProperty.dart';
-import 'package:custompaint/widget/properties/LineProperty.dart';
+import 'package:custompaint/widget/properties/edit/subtype/CurveProperty.dart';
+import 'package:custompaint/widget/properties/edit/subtype/LineProperty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class CurrentPropertiesWidget extends StatelessWidget {
-  const CurrentPropertiesWidget({super.key});
+class EditPropertiesWidget extends StatelessWidget {
+  const EditPropertiesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +76,8 @@ class CurrentPropertiesWidget extends StatelessWidget {
   }
 
   Widget getWidgetByType(FakeWidget bean) {
+    final logic = Get.find<MainLogic>();
+    final state = logic.state;
     switch (bean.type) {
       case WidgetType.line:
         return LineProperty(bean: bean);

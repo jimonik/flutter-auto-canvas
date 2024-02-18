@@ -4,15 +4,11 @@ import 'package:flutter/material.dart';
 class MyCustomPainter extends CustomPainter {
   final Color backgroundColor;
   final List<FakeWidget> line;
-  late Size s;
-  late Canvas c;
 
   MyCustomPainter(
       {super.repaint, required this.backgroundColor, required this.line});
   @override
   void paint(Canvas canvas, Size size) {
-    c = canvas;
-    s = size;
     final Paint paint = Paint();
     drawBackgroundColor(canvas, size, backgroundColor, paint);
     drawWidget(line, paint, canvas, size);
@@ -51,14 +47,15 @@ class MyCustomPainter extends CustomPainter {
     }
   }
 
-  void drawLine(FakeWidget element, Paint paint, Canvas canvas, Size size) {
-    paint.color = element.color.value;
-    paint.strokeWidth = element.strokeWidth.value;
-    paint.strokeCap = element.strokeCap.value;
+  void drawLine(FakeWidget fakeWidget, Paint paint, Canvas canvas, Size size) {
+    paint.color = fakeWidget.color.value;
+    paint.strokeWidth = fakeWidget.strokeWidth.value;
+    paint.strokeCap = fakeWidget.strokeCap.value;
     canvas.drawLine(
-      Offset(size.width * element.startX.value,
-          size.height * element.startY.value),
-      Offset(size.width * element.endX.value, size.height * element.endY.value),
+      Offset(size.width * fakeWidget.startX.value,
+          size.height * fakeWidget.startY.value),
+      Offset(size.width * fakeWidget.endX.value,
+          size.height * fakeWidget.endY.value),
       paint,
     );
   }
@@ -77,7 +74,7 @@ class MyCustomPainter extends CustomPainter {
           size.width * point.endX.value,
           size.height * point.endY.value);
     }
-    // path.close();
+    path.close();
     canvas.drawPath(path, paint);
   }
 }

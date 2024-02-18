@@ -62,4 +62,9 @@ class MainLogic extends GetxController {
             ].obs));
     }
   }
+
+  void refreshList() {
+    var l = state.fakeWidgetList.map((element) => element.clone()).toList();
+    state.fakeWidgetList.assignAll(l);
+  }
 }

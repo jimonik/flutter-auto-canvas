@@ -7,8 +7,8 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:get/get.dart';
 
-class PublicPanelWidget extends StatelessWidget {
-  const PublicPanelWidget({super.key});
+class PublicPropertyWidget extends StatelessWidget {
+  const PublicPropertyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
