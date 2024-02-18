@@ -43,7 +43,7 @@ class MainPage extends StatelessWidget {
           const Expanded(
               flex: 1,
               child: DefaultTabController(
-                length: 3,
+                length: 2,
                 child: Column(
                   children: [
                     Tab(
