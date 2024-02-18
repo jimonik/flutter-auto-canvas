@@ -1,4 +1,5 @@
-import 'package:custompaint/bean/Line.dart';
+import 'package:custompaint/bean/FakeWidget.dart';
+import 'package:custompaint/bean/WidgetType.dart';
 import 'package:flutter/material.dart';
 
 class MyCustomPainter extends CustomPainter {
@@ -32,7 +33,7 @@ class MyCustomPainter extends CustomPainter {
         case WidgetType.circle:
           _drawCircle(element, paint, canvas, size);
         case WidgetType.elliptic:
-        // TODO: Handle this case.
+          _drawElliptic(element, paint, canvas, size);
         case WidgetType.nAngle:
         // TODO: Handle this case.
       }
@@ -76,12 +77,43 @@ class MyCustomPainter extends CustomPainter {
       FakeWidget fakeWidget, Paint paint, Canvas canvas, Size size) {
     paint.color = fakeWidget.color.value;
     paint.strokeWidth = fakeWidget.strokeWidth.value;
-    paint.strokeCap = fakeWidget.strokeCap.value;
     paint.style = fakeWidget.style.value;
     canvas.drawCircle(
         Offset(size.width * fakeWidget.startX.value,
             size.height * fakeWidget.startY.value),
         fakeWidget.circleRadius.value,
         paint);
+  }
+
+  void _drawElliptic(
+      FakeWidget fakeWidget, Paint paint, Canvas canvas, Size size) {
+    paint.color = fakeWidget.color.value;
+    paint.strokeWidth = fakeWidget.strokeWidth.value;
+    paint.style = fakeWidget.style.value;
+    //todo：旋转未完成
+    // canvas.restore();
+    // // 将画布平移到椭圆中心点
+    // double x = (size.width * fakeWidget.rectRight.value -
+    //             size.width * fakeWidget.rectLeft.value) /
+    //         2 +
+    //     size.width * fakeWidget.rectLeft.value;
+    // double y = (size.height * fakeWidget.rectBottom.value -
+    //             size.height * fakeWidget.rectTop.value) /
+    //         2 +
+    //     size.height * fakeWidget.rectTop.value;
+    // canvas.translate(x, y);
+
+    // 旋转画布
+    // canvas.rotate(fakeWidget.angle.value);
+    canvas.drawOval(
+        Rect.fromLTRB(
+            size.width * fakeWidget.rectLeft.value,
+            size.height * fakeWidget.rectTop.value,
+            size.width * fakeWidget.rectRight.value,
+            size.height * fakeWidget.rectBottom.value),
+        paint);
+
+    // 将画布平移回原点
+    // canvas.translate(-size.width / 2, -size.height / 2);
   }
 }

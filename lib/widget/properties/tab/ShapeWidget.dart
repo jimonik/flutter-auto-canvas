@@ -24,11 +24,11 @@ class ShapeWidget extends StatelessWidget {
                   Expanded(
                       child: InkWell(
                     onTap: () {
-                      if (state.selectedFakeWidget.value == index) {
+                      if (state.selectedFakeWidget.value != index) {
+                        state.selectedFakeWidget.value = index;
+                      } else {
                         state.selectedFakeWidget.value = -1;
-                        return;
                       }
-                      state.selectedFakeWidget.value = index;
                     },
                     child: Obx(() {
                       return Container(
@@ -79,6 +79,7 @@ class ShapeWidget extends StatelessWidget {
                   ),
                   ElevatedButton(
                       onPressed: () {
+                        state.selectedFakeWidget.value = -1;
                         state.fakeWidgetList.remove(bean);
                       },
                       child: const Text("删除"))

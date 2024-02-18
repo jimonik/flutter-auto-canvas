@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:custompaint/bean/CurveLineBean.dart';
+import 'package:custompaint/bean/WidgetType.dart';
 import 'package:get/get.dart';
 
 class FakeWidget {
@@ -17,8 +19,14 @@ class FakeWidget {
   final RxString name;
   final RxList<CurveLineBean> curvePointList;
   final RxDouble circleRadius;
+  final RxDouble rectLeft;
+  final RxDouble rectTop;
+  final RxDouble rectRight;
+  final RxDouble rectBottom;
 
   final Rx<PaintingStyle> style;
+
+  final RxDouble angle;
   FakeWidget({
     required this.color,
     required this.startY,
@@ -33,6 +41,11 @@ class FakeWidget {
     required this.curvePointList,
     required this.circleRadius,
     required this.style,
+    required this.rectLeft,
+    required this.rectTop,
+    required this.rectRight,
+    required this.rectBottom,
+    required this.angle,
   });
   FakeWidget clone() {
     return FakeWidget(
@@ -48,31 +61,11 @@ class FakeWidget {
         strokeCap: strokeCap,
         curvePointList: curvePointList,
         circleRadius: circleRadius,
-        style: style);
+        style: style,
+        rectLeft: rectLeft,
+        rectTop: rectTop,
+        rectRight: rectRight,
+        rectBottom: rectBottom,
+        angle: angle);
   }
-}
-
-enum WidgetType {
-  line(name: "直线"),
-  curve(name: "曲线"),
-  circle(name: "圆形"),
-  elliptic(name: "椭圆"),
-  nAngle(name: "N边形"),
-  ;
-
-  final String name;
-  const WidgetType({required this.name});
-}
-
-class CurveLineBean {
-  final RxDouble startX;
-  final RxDouble endX;
-  final RxDouble startY;
-  final RxDouble endY;
-
-  CurveLineBean(
-      {required this.startX,
-      required this.endX,
-      required this.startY,
-      required this.endY});
 }

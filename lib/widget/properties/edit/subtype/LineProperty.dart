@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:custompaint/bean/Line.dart';
+import 'package:custompaint/bean/FakeWidget.dart';
 import 'package:custompaint/page/main/logic.dart';
 import 'package:custompaint/util/Util.dart';
 import 'package:custompaint/widget/CustomTextField.dart';

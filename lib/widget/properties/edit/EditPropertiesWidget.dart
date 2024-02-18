@@ -1,8 +1,10 @@
-import 'package:custompaint/bean/Line.dart';
+import 'package:custompaint/bean/FakeWidget.dart';
+import 'package:custompaint/bean/WidgetType.dart';
 import 'package:custompaint/page/main/logic.dart';
 import 'package:custompaint/widget/CustomTextField.dart';
 import 'package:custompaint/widget/properties/edit/subtype/CircleProperty.dart';
 import 'package:custompaint/widget/properties/edit/subtype/CurveProperty.dart';
+import 'package:custompaint/widget/properties/edit/subtype/EllipticProperty.dart';
 import 'package:custompaint/widget/properties/edit/subtype/LineProperty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,10 +21,11 @@ class EditPropertiesWidget extends StatelessWidget {
       decoration:
           BoxDecoration(border: Border.all(color: Colors.grey.shade200)),
       child: Obx(() {
-        if (state.selectedFakeWidget.value < 0) {
+        if (state.selectedFakeWidget.value < 0 ||
+            state.fakeWidgetList.isEmpty) {
+          state.selectedFakeWidget.value = -1;
           return const Center(child: Text("请选择组件"));
         }
-
         var bean = state.fakeWidgetList[state.selectedFakeWidget.value];
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,11 +90,10 @@ class EditPropertiesWidget extends StatelessWidget {
       case WidgetType.circle:
         return CircleProperty(bean: bean);
       case WidgetType.elliptic:
-        // TODO: Handle this case.
-        return Text("椭圆");
+        return EllipticProperty(bean: bean);
       case WidgetType.nAngle:
         // TODO: Handle this case.
-        return Text("N边行");
+        return const Text("N边行");
     }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:custompaint/bean/Line.dart';
+import 'package:custompaint/bean/WidgetType.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

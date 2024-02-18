@@ -1,4 +1,6 @@
-import 'package:custompaint/bean/Line.dart';
+import 'package:custompaint/bean/CurveLineBean.dart';
+import 'package:custompaint/bean/FakeWidget.dart';
+import 'package:custompaint/bean/WidgetType.dart';
 import 'package:custompaint/widget/dialog/SelectWidgetDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +36,12 @@ class MainLogic extends GetxController {
             strokeCap: StrokeCap.square.obs,
             curvePointList: <CurveLineBean>[].obs,
             circleRadius: (3.0).obs,
-            style: PaintingStyle.fill.obs));
+            style: PaintingStyle.fill.obs,
+            rectLeft: (0.0).obs,
+            rectTop: (0.0).obs,
+            rectRight: (0.0).obs,
+            rectBottom: (0.0).obs,
+            angle: (0.0).obs));
       case WidgetType.curve:
         state.fakeWidgetList.add(FakeWidget(
             color: Colors.black.obs,
@@ -60,7 +67,12 @@ class MainLogic extends GetxController {
                   endY: (1.0).obs),
             ].obs,
             circleRadius: (3.0).obs,
-            style: PaintingStyle.fill.obs));
+            style: PaintingStyle.fill.obs,
+            rectLeft: (0.0).obs,
+            rectTop: (0.0).obs,
+            rectRight: (0.0).obs,
+            rectBottom: (0.0).obs,
+            angle: (0.0).obs));
       case WidgetType.circle:
         state.fakeWidgetList.add(FakeWidget(
             color: Colors.black.obs,
@@ -75,9 +87,32 @@ class MainLogic extends GetxController {
             strokeCap: StrokeCap.square.obs,
             curvePointList: <CurveLineBean>[].obs,
             circleRadius: (3.0).obs,
-            style: PaintingStyle.fill.obs));
+            style: PaintingStyle.fill.obs,
+            rectLeft: (0.0).obs,
+            rectTop: (0.0).obs,
+            rectRight: (0.0).obs,
+            rectBottom: (0.0).obs,
+            angle: (0.0).obs));
       case WidgetType.elliptic:
-      // TODO: Handle this case.
+        state.fakeWidgetList.add(FakeWidget(
+            color: Colors.black.obs,
+            strokeWidth: (3.0).obs,
+            startX: (0.0).obs,
+            startY: (0.0).obs,
+            endX: (1.0).obs,
+            endY: (1.0).obs,
+            uuid: const Uuid().v4(),
+            type: WidgetType.elliptic,
+            name: "".obs,
+            strokeCap: StrokeCap.square.obs,
+            curvePointList: <CurveLineBean>[].obs,
+            circleRadius: (3.0).obs,
+            style: PaintingStyle.fill.obs,
+            rectLeft: (0.26).obs,
+            rectTop: (0.09).obs,
+            rectRight: (0.78).obs,
+            rectBottom: (0.9).obs,
+            angle: (0.0).obs));
       case WidgetType.nAngle:
       // TODO: Handle this case.
     }
