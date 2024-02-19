@@ -16,10 +16,16 @@ class MainPage extends StatelessWidget {
     final state = logic.state;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("自定义组件代码生成器"),
-        centerTitle: true,
-      ),
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: const Text("自定义组件代码生成器"),
+          centerTitle: true,
+          leading: InkWell(
+            onTap: logic.export,
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.import_export),
+            ),
+          )),
       body: Row(
         children: [
           Expanded(

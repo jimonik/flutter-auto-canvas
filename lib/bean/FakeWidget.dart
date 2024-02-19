@@ -68,4 +68,28 @@ class FakeWidget {
         rectBottom: rectBottom,
         angle: angle);
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "color": color.value.value,
+      "startY": startY.value,
+      "endY": endY.value,
+      "startX": startX.value,
+      "endX": endX.value,
+      "strokeWidth": strokeWidth.value,
+      "uuid": uuid,
+      "type": type.name,
+      "name": name.value,
+      "strokeCap": strokeCap.value.name,
+      "curvePointList":
+          curvePointList.map((element) => element.toJson()).toList(),
+      "circleRadius": circleRadius.value,
+      "style": style.value.name,
+      "rectLeft": rectLeft.value,
+      "rectTop": rectTop.value,
+      "rectRight": rectRight.value,
+      "rectBottom": rectBottom.value,
+      "angle": angle.value,
+    };
+  }
 }
