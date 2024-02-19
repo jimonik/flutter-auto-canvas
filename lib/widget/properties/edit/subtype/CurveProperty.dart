@@ -80,7 +80,7 @@ class CurveProperty extends StatelessWidget {
           Row(
             children: [
               Obx(() {
-                return Text("初始位置X(${bean.startX.value}):");
+                return Text("初始位置X(${bean.startX.value.toStringAsFixed(2)}):");
               }),
               Expanded(
                 child: Obx(() {
@@ -98,7 +98,7 @@ class CurveProperty extends StatelessWidget {
           Row(
             children: [
               Obx(() {
-                return Text("初始位置Y(${bean.startY.value}):");
+                return Text("初始位置Y(${bean.startY.value.toStringAsFixed(2)}):");
               }),
               Expanded(
                 child: Obx(() {
@@ -183,7 +183,10 @@ class CurveProperty extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Text("startX:"),
+                        Obx(() {
+                          return Text(
+                              "startX(${item.startX.value.toStringAsFixed(2)}):");
+                        }),
                         Expanded(
                           child: Obx(() {
                             return Slider(
@@ -199,7 +202,10 @@ class CurveProperty extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Text("startY:"),
+                        Obx(() {
+                          return Text(
+                              "startY(${item.startY.value.toStringAsFixed(2)}):");
+                        }),
                         Expanded(
                           child: Obx(() {
                             return Slider(
@@ -215,7 +221,10 @@ class CurveProperty extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Text("endX:"),
+                        Obx(() {
+                          return Text(
+                              "endX(${item.endX.value.toStringAsFixed(2)}):");
+                        }),
                         Expanded(
                           child: Obx(() {
                             return Slider(
@@ -231,7 +240,10 @@ class CurveProperty extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Text("endY:"),
+                        Obx(() {
+                          return Text(
+                              "endY(${item.endY.value.toStringAsFixed(2)}):");
+                        }),
                         Expanded(
                           child: Obx(() {
                             return Slider(

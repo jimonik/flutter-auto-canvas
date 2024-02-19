@@ -57,6 +57,9 @@ class PublicPropertyWidget extends StatelessWidget {
                           border: InputBorder.none,
                           hintText: "请输入高度",
                         ),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9.]'))
+                        ],
                         onChanged: (t) {
                           state.panelHeight.value = double.tryParse(t) ?? 400;
                         },

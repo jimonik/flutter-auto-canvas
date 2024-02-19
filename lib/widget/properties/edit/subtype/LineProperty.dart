@@ -22,7 +22,9 @@ class LineProperty extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text("startX:"),
+            Obx(() {
+              return Text("startX(${bean.startX.value.toStringAsFixed(2)}):");
+            }),
             Expanded(
               child: Obx(() {
                 return Slider(
@@ -36,7 +38,9 @@ class LineProperty extends StatelessWidget {
         ),
         Row(
           children: [
-            const Text("startY:"),
+            Obx(() {
+              return Text("startY(${bean.startY.value.toStringAsFixed(2)}):");
+            }),
             Expanded(
               child: Obx(() {
                 return Slider(
@@ -50,7 +54,9 @@ class LineProperty extends StatelessWidget {
         ),
         Row(
           children: [
-            const Text("endX:"),
+            Obx(() {
+              return Text("endX(${bean.endX.value.toStringAsFixed(2)}):");
+            }),
             Expanded(
               child: Obx(() {
                 return Slider(
@@ -64,7 +70,9 @@ class LineProperty extends StatelessWidget {
         ),
         Row(
           children: [
-            const Text("endY:"),
+            Obx(() {
+              return Text("endY(${bean.endY.value.toStringAsFixed(2)}):");
+            }),
             Expanded(
               child: Obx(() {
                 return Slider(
@@ -79,7 +87,7 @@ class LineProperty extends StatelessWidget {
         Row(
           children: [
             Obx(() {
-              return Text("线宽:${bean.strokeWidth.value.toStringAsFixed(2)}");
+              return Text("线宽:(${bean.strokeWidth.value.toStringAsFixed(2)})");
             }),
             Expanded(
               child: Obx(() {
@@ -149,33 +157,36 @@ class LineProperty extends StatelessWidget {
             ),
           ),
         ),
-        Row(
-          children: [
-            Obx(() {
-              return Checkbox(
-                  value: bean.strokeCap.value == StrokeCap.round,
-                  onChanged: (b) {
-                    bean.strokeCap.value = StrokeCap.round;
-                  });
-            }),
-            const Text("圆角"),
-            Obx(() {
-              return Checkbox(
-                  value: bean.strokeCap.value == StrokeCap.square,
-                  onChanged: (b) {
-                    bean.strokeCap.value = StrokeCap.square;
-                  });
-            }),
-            const Text("直角"),
-            Obx(() {
-              return Checkbox(
-                  value: bean.strokeCap.value == StrokeCap.butt,
-                  onChanged: (b) {
-                    bean.strokeCap.value = StrokeCap.butt;
-                  });
-            }),
-            const Text("无端点直角"),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              Obx(() {
+                return Checkbox(
+                    value: bean.strokeCap.value == StrokeCap.round,
+                    onChanged: (b) {
+                      bean.strokeCap.value = StrokeCap.round;
+                    });
+              }),
+              const Text("圆角"),
+              Obx(() {
+                return Checkbox(
+                    value: bean.strokeCap.value == StrokeCap.square,
+                    onChanged: (b) {
+                      bean.strokeCap.value = StrokeCap.square;
+                    });
+              }),
+              const Text("直角"),
+              Obx(() {
+                return Checkbox(
+                    value: bean.strokeCap.value == StrokeCap.butt,
+                    onChanged: (b) {
+                      bean.strokeCap.value = StrokeCap.butt;
+                    });
+              }),
+              const Text("无端点直角"),
+            ],
+          ),
         )
       ],
     );
