@@ -14,6 +14,7 @@ class CurveProperty extends StatelessWidget {
   final FakeWidget bean;
 
   const CurveProperty({super.key, required this.bean});
+
   @override
   Widget build(BuildContext context) {
     final logic = Get.find<MainLogic>();
@@ -78,7 +79,9 @@ class CurveProperty extends StatelessWidget {
           ),
           Row(
             children: [
-              const Text("初始位置X:"),
+              Obx(() {
+                return Text("初始位置X(${bean.startX.value}):");
+              }),
               Expanded(
                 child: Obx(() {
                   return Slider(
@@ -94,7 +97,9 @@ class CurveProperty extends StatelessWidget {
           ),
           Row(
             children: [
-              const Text("初始位置Y:"),
+              Obx(() {
+                return Text("初始位置Y(${bean.startY.value}):");
+              }),
               Expanded(
                 child: Obx(() {
                   return Slider(
@@ -121,6 +126,24 @@ class CurveProperty extends StatelessWidget {
                       value: bean.strokeWidth.value,
                       onChanged: (a) {
                         bean.strokeWidth.value = a;
+                      });
+                }),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Obx(() {
+                return Text("角度:${bean.angle.value.toStringAsFixed(2)}");
+              }),
+              Expanded(
+                child: Obx(() {
+                  return Slider(
+                      min: 0,
+                      max: 360,
+                      value: bean.angle.value,
+                      onChanged: (a) {
+                        bean.angle.value = a;
                       });
                 }),
               ),

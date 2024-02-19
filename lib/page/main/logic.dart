@@ -86,7 +86,7 @@ class MainLogic extends GetxController {
             name: "".obs,
             strokeCap: StrokeCap.square.obs,
             curvePointList: <CurveLineBean>[].obs,
-            circleRadius: (3.0).obs,
+            circleRadius: (50.0).obs,
             style: PaintingStyle.fill.obs,
             rectLeft: (0.0).obs,
             rectTop: (0.0).obs,
@@ -114,7 +114,41 @@ class MainLogic extends GetxController {
             rectBottom: (0.9).obs,
             angle: (0.0).obs));
       case WidgetType.nAngle:
-      // TODO: Handle this case.
+        state.fakeWidgetList.add(FakeWidget(
+            color: Colors.black.obs,
+            strokeWidth: (3.0).obs,
+            startX: (0.0).obs,
+            startY: (0.0).obs,
+            endX: (1.0).obs,
+            endY: (1.0).obs,
+            uuid: const Uuid().v4(),
+            type: WidgetType.nAngle,
+            name: "".obs,
+            strokeCap: StrokeCap.square.obs,
+            curvePointList: <CurveLineBean>[
+              CurveLineBean(
+                  startX: (0.2).obs,
+                  endX: (0.2).obs,
+                  startY: (0.0).obs,
+                  endY: (0.0).obs),
+              CurveLineBean(
+                  startX: (0.6).obs,
+                  endX: (0.6).obs,
+                  startY: (0.0).obs,
+                  endY: (0.0).obs),
+              CurveLineBean(
+                  startX: (0.3).obs,
+                  endX: (0.4).obs,
+                  startY: (0.0).obs,
+                  endY: (0.0).obs),
+            ].obs,
+            circleRadius: (3.0).obs,
+            style: PaintingStyle.fill.obs,
+            rectLeft: (0.0).obs,
+            rectTop: (0.0).obs,
+            rectRight: (0.0).obs,
+            rectBottom: (0.0).obs,
+            angle: (0.0).obs));
     }
   }
 

@@ -1,4 +1,4 @@
-import 'package:custompaint/MyCustomPainter.dart';
+import 'package:custompaint/widget/MyCustomPainter.dart';
 import 'package:custompaint/widget/properties/edit/EditPropertiesWidget.dart';
 import 'package:custompaint/widget/properties/tab/PublicPropertyWidget.dart';
 import 'package:custompaint/widget/properties/tab/ShapeWidget.dart';

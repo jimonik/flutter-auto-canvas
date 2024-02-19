@@ -6,6 +6,7 @@ import 'package:custompaint/widget/properties/edit/subtype/CircleProperty.dart';
 import 'package:custompaint/widget/properties/edit/subtype/CurveProperty.dart';
 import 'package:custompaint/widget/properties/edit/subtype/EllipticProperty.dart';
 import 'package:custompaint/widget/properties/edit/subtype/LineProperty.dart';
+import 'package:custompaint/widget/properties/edit/subtype/NShapeProperty.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -92,8 +93,7 @@ class EditPropertiesWidget extends StatelessWidget {
       case WidgetType.elliptic:
         return EllipticProperty(bean: bean);
       case WidgetType.nAngle:
-        // TODO: Handle this case.
-        return const Text("N边行");
+        return NShapeProperty(bean: bean);
     }
   }
 }
